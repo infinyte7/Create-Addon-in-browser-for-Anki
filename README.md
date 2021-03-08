@@ -1,23 +1,21 @@
-# Tutorial : Create Addon in browser for Anki
-Create Addon in browser for Anki, AnkiDroid and AnkiMobile
+# Tutorial : How to create an Anki-addon for the browser
+This project will explain how to create a web-app that can be used as an addon for Anki to generate decks. 
+The resulting addon can be then used with Anki, AnkiDroid and AnkiMobile.
 
-This project will explain how to create web app that can be used as addon for Anki to generate decks
+## Example addon
 
-## Quick Start
-
-Create simple decks with front and back side with Basic templates in browser<br>
-Open in browser
+Let's start with an example: an app that let's you create basic question-answer cards in the browser.
 
 https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
-1. Add text to front and back side
-2. Click add button to add notes data to list
-3. Click download to generate and export deck
+<b>Usage</b>
+1. Add text for the front and back side of a card
+2. Click the add button to save the node
+3. Click download to export a deck containing the saved notes
 
-
-# To create Addon in browser
+# web-app addons
 - [Setup](#setup)
-- [How is it works ?](#how-is-it-works-)
+- [How does it work?](#How-does-it-work?)
 - [Advantages](#advantages)
 - [Disadvantages](#disadvantages)
 - [Projects](#projects)
@@ -29,25 +27,24 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
 # Setup
 1. Fork this repository
-2. All the setup file are in docs folder
-3. ```index.html``` is front page for sending note data from html/js to pyodide internally
-4. ```index.js``` contain code for object conversion between javaScript and pyodide
-5. ```deck-export.js``` contain codes for generating and downloading Anki decks
+2. All the setup-files are in docs folder
+3. ```index.html``` is the front page for sending note data from html/js to pyodide internally
+4. ```index.js``` contains code for object conversion between javaScript and pyodide
+5. ```deck-export.js``` contains code for generating and downloading Anki decks
 
-# How is it works ?
-1. Notes data from html/js sent to pyodide in tab separated format
-2. When ```add button``` clicked then pyodide write data to ```output-all-notes.txt``` 
-3. When ```download button``` clicked then pyodide module ```genanki``` generate Anki decks from tsv file ```output-all-notes.txt``` and download
+# How does it work?
+1. Note data is sent from html/js to pyodide in a tab-separated format
+2. When you click the ```add button``` pyodide writes the data to ```output-all-notes.txt``` 
+3. When you click the ```download button``` ```genanki``` generates Anki decks from ```output-all-notes.txt``` and downloads it
 
 # Advantages
-- Run on smartphone as well as desktop
-- Import generated decks to any version of Anki
-- Once implemented then easier to use
+- Runs on smartphones as well as on desktop computers
+- You can import the generated decks to any version of Anki
 
 # Disadvantages
-- Loading time is high
-- Python module like opencv not available
-- Needs to understand object conversion between javaScript and python
+- The loading time is high
+- Some python modules are not available (for example opencv)
+- One needs to understand object conversion between javaScript and python
 
 # Projects 
 - [image occlusion in browser](https://github.com/infinyte7/image-occlusion-in-browser)
@@ -73,7 +70,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
   <script src="js/deck-export.js"></script>
 ```
 
-2. Front and back text area added in ```index.html```
+2. Text areas for front and back fields of the card to be added
 ```html
   <!-- Note Form -->
   <!-- Front Back -->
@@ -89,7 +86,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
     </div>
   </div>
 ```
-3. Two button added for adding notes data to list and downloading decks
+3. Buttons for adding note data to a list and for downloading decks
 ```html
     <div id="done-export-all" class="toolbar-button" style="float: right; display: block;" onclick="exportAll();"><i
         class="material-icons">get_app</i></div>
@@ -100,7 +97,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
 ### index.js
 [View index.js](docs/js/index.js)
-1. Adding notes data to pyodide 
+1. Adding note data to pyodide 
 ```js
 // add note data to pyodide output text file for deck export
 var textToExport = "";
@@ -158,8 +155,8 @@ languagePluginLoader.then(function () {
 });
 
 ```
-2. python code to generate decks from tsv file ```output-all-notes.txt```
-pythonCode = 
+2. python code to generate decks from the tsv file ```output-all-notes.txt```
+
 ```python
       import genanki
 
@@ -231,13 +228,13 @@ pythonCode =
 ```
 3. Change front, back, style and fields
 
-Front and back should contain fields that present in ```t_fields```.
+Front and back should contain fields that are present in ```t_fields```.
 
-```t_fields``` should contains fields in following manner.
+```t_fields``` should contain fields in the following manner.
 ```python
 {"name": "Field name"}
 ```
-4. Images can also be adde to deck if tsv file contains ```<img>``` with src tag
+4. Images can also be added to a deck if the tsv file contains ```<img>``` with a src tag
 ```python
 # add media
 files = []
@@ -249,7 +246,7 @@ anki_package.media_files = files
 Same goes for other media files.
 View usage in [image occlusion in browser](https://github.com/infinyte7/image-occlusion-in-browser)
 
-5. Import required python module in pyodide
+5. Import the required python module in pyodide
 ```python
 import micropip
 
@@ -279,7 +276,7 @@ function downloadDeck() {
     downloadLink.click();
 }
 ```
-7. Download ```output-all-notes.txt``` containing notes data added form
+7. Download ```output-all-notes.txt``` containing note data
 ```js
 function exportText() {
     let txt = pyodide.runPython(`                  
@@ -300,7 +297,7 @@ function exportText() {
     downloadLink.click();
 }
 ```
-8. Note:  for \ (back slash), use \\ (double back) in ```pythonCode``` other wise it will not work or show error.
+8. Note:  If you want to use backslashes \\ in ```pythonCode``` you have to escape them with another backslash \\\\, otherwise it will not work or show an error.
 ```js
     csv_reader = csv.reader(csv_file, delimiter="\t")
                                                ^^^^^
