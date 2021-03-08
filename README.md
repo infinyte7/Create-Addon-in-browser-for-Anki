@@ -16,16 +16,16 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
 
 # To create Addon in browser
-- [Setup](Create-Addon-in-browser-for-Anki#setup)
-- [How is it works ?](Create-Addon-in-browser-for-Anki#how-is-it-works-)
-- [Advantages](Create-Addon-in-browser-for-Anki#advantages)
-- [Disadvantages](Create-Addon-in-browser-for-Anki#disadvantages)
-- [Example Projects](Create-Addon-in-browser-for-Anki#example-projects)
-- [Read more](Create-Addon-in-browser-for-Anki#read-more)
-- [Tutorial](Create-Addon-in-browser-for-Anki#tutorial)
-    - [index.html](Create-Addon-in-browser-for-Anki#indexhtml)
-    - [index.js](Create-Addon-in-browser-for-Anki#indexjs)
-    - [deck-export.js](Create-Addon-in-browser-for-Anki#deck-exportjs)
+- [Setup](#setup)
+- [How is it works ?](#how-is-it-works-)
+- [Advantages](#advantages)
+- [Disadvantages](#disadvantages)
+- [Example Projects](#example-projects)
+- [Read more](#read-more)
+- [Tutorial](#tutorial)
+    - [index.html](#indexhtml)
+    - [index.js](#indexjs)
+    - [deck-export.js](#deck-exportjs)
 
 # Setup
 1. Fork this repository
