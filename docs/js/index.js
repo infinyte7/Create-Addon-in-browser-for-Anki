@@ -57,25 +57,3 @@ function exportAll() {
     exportDeck();
     downloadDeck();
 }
-
-// https://stackoverflow.com/questions/6604192/showing-console-errors-and-alerts-in-a-div-inside-the-page
-if (typeof console != "undefined")
-    if (typeof console.log != 'undefined')
-        console.olog = console.log;
-    else
-        console.olog = function () { };
-
-console.log = function (message) {
-    console.olog(message);
-    document.getElementById("pyodide-load-msg").innerHTML += '<p>' + message + '</p>';
-};
-console.debug = console.info = console.log
-
-console.error = function (message) {
-    console.error(message);
-    document.getElementById("pyodide-load-msg").innerHTML += '<p style="color:red;">' + message + '</p>';
-};
-
-function closeConsole() {
-    document.getElementById("pyodide-load-status").style.display = "none";
-}
