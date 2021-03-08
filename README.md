@@ -60,6 +60,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
 # Tutorial
 ### index.html
+[View index.html](docs/index.html)
 1. Add pyodide
 ```html
   <script type="text/javascript">
@@ -98,6 +99,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 ```
 
 ### index.js
+[View index.js](docs/js/index.js)
 1. Adding notes data to pyodide 
 ```js
 // add note data to pyodide output text file for deck export
@@ -137,6 +139,7 @@ function exportAll() {
 ```
 
 ### deck-export.js
+[View deck-export.js](docs/js/deck-export.js)
 1. Init pyodide for running python in browser
 ```js
 languagePluginLoader.then(() => {
