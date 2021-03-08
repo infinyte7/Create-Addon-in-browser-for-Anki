@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Author: Infinyte7 (Mani)
+-->
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/index.js"></script>
+
+  <link href="css/index.css" rel=stylesheet type=text/css>
+
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- <script type="text/javascript">
+    window.languagePluginUrl = 'https://pyodide-cdn2.iodide.io/dev/full/';
+  </script>
+  <script src="https://pyodide-cdn2.iodide.io/dev/full/pyodide.js"></script> -->
+
+
+  <script type="text/javascript">
+    window.languagePluginUrl = 'pyodide/dev/full/';
+  </script>
+  <script src="pyodide/dev/full/pyodide.js"></script>
+
+  <title>
+   Create Addon in browser for Anki AnkiDroid and AnkiMobile
+  </title>
+</head>
+
+<body>
+
+  <header>
+    <div style="width: -webkit-fill-available;">
+      <div id="page-title-id" class="toolbar-button" style="float: left;font-size: 24px;">Addon Name</div>
+
+      <div id="done-export-all" class="toolbar-button" style="float: right; display: block;" onclick="exportAll();"><i
+          class="material-icons">get_app</i></div>
+
+      <div id="done-btn" class="toolbar-button" style="float: right;" onclick="addNoteToList();"><i
+          class="material-icons">add</i></div>
+
+      <div id="close-add-note-btn" class="toolbar-button" style="float: right; display: none;"
+        onclick="closeAddNoteNav()"><i class="material-icons">close</i></div>
+    </div>
+  </header>
+  
+  <div id="statusMsg" class="status-message">Wait for loading...</div>
+  <div id="snackbar"></div>
+  <div id="loading"></div>
+
+
+  
+  <!-- Note Form -->
+  <!-- Front Back -->
+  <div id="add-note">
+    <div class="input-note" style="padding-top: 60px;">Front
+      <hr class="thin">
+      <textarea id="noteFront" class="input-add-note" type="text" placeholder="Front..." required></textarea>
+    </div>
+
+    <div class="input-note" style="padding-top: 30px;">Back
+      <hr class="thin">
+      <textarea id="noteBack" class="input-add-note" type="text" placeholder="Back..." required></textarea>
+    </div>
+  </div>
+
+
+
+  <!-- Show pyodide console log -->
+  <div id="pyodide-load-status" class="pop-up" style="display: table; position: absolute; text-align: left; padding: 14px;">
+    <div id="close-settings-btn" class="toolbar-button" style="float: right;" onclick="closeConsole()">
+      <i class="material-icons">close</i>
+    </div>
+    <div><h2>Status</h2></div>
+    <div id="pyodide-load-msg"></div>
+  </div>
+
+
+  <!-- pyodide script anki deck export -->
+  <script src="js/deck-export.js"></script>
+</body>
+
+</html>
