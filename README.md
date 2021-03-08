@@ -20,7 +20,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 - [How is it works ?](#how-is-it-works-)
 - [Advantages](#advantages)
 - [Disadvantages](#disadvantages)
-- [Example Projects](#example-projects)
+- [Projects](#projects)
 - [Read more](#read-more)
 - [Tutorial](#tutorial)
     - [index.html](#indexhtml)
