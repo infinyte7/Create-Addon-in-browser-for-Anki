@@ -24,7 +24,8 @@ if new_title != None:
 
 anki_model_name = "addon-in-browser"
 
-model_id = random.randrange(1 << 30, 1 << 31)
+# model_id = random.randrange(1 << 30, 1 << 31)
+model_id = 1716551648
 
 def exportDeck(data_filename, deck_filename):
    try:
