@@ -1,5 +1,19 @@
-# Create-Addon-in-browser-for-Anki
+# Tutorial : Create Addon in browser for Anki
 Create Addon in browser for Anki, AnkiDroid and AnkiMobile
+
+This project will explain how to create web app that can be used as addon for Anki to generate decks
+
+## Quick Start
+
+Create simple decks with front and back side with Basic templates in browser<br>
+Open in browser
+
+https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
+
+1. Add text to front and back side
+2. Click add button to add notes data to list
+3. Click download to generate and export deck
+
 
 # To create Addon in browser
 - [Setup](Create-Addon-in-browser-for-Anki#setup)
