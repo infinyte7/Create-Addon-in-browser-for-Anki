@@ -20,6 +20,7 @@ function addNoteToList() {
 
     // remove last space, tab...
     textToExport = textToExport.trim();
+    textToExport += "\n";
 
     // write to file using pyodide
     pyodide.runPython("textFileName = js.textFileName")
