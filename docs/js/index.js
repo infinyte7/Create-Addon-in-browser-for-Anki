@@ -30,7 +30,7 @@ function addNoteToList() {
                             f.write(textToExport)`)
 
     showSnackbar("Note added to list");
-
+    textToExport = "";
     clearNote();
 }
 
