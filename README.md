@@ -45,12 +45,11 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 - Once implemented then easier to use
 
 # Disadvantages
-- Network access not available
-- Python module like opencv not available
 - Loading time is high
+- Python module like opencv not available
 - Needs to understand object conversion between javaScript and python
 
-# Example Projects 
+# Projects 
 - [image occlusion in browser](https://github.com/infinyte7/image-occlusion-in-browser)
 - [ocloze: cloze overlapper in browser](https://github.com/infinyte7/ocloze)
 
