@@ -67,7 +67,7 @@ Pyodide provides transparent conversion of objects between Javascript and Python
 # Tutorial
 ### index.html
 [View index.html](docs/index.html)
-1. Add pyodide
+#### 1. Add pyodide
 ```html
   <script type="text/javascript">
     window.languagePluginUrl = 'pyodide/dev/full/';
@@ -79,7 +79,7 @@ Pyodide provides transparent conversion of objects between Javascript and Python
   <script src="js/deck-export.js"></script>
 ```
 
-2. Text areas for front and back fields of the card to be added
+#### 2. Text areas for front and back fields of the card to be added
 ```html
   <!-- Note Form -->
   <!-- Front Back -->
@@ -95,7 +95,7 @@ Pyodide provides transparent conversion of objects between Javascript and Python
     </div>
   </div>
 ```
-3. Buttons for adding note data to a list and for downloading decks
+#### 3. Buttons for adding note data to a list and for downloading decks
 ```html
     <div id="done-export-all" class="toolbar-button" style="float: right; display: block;" onclick="exportAll();"><i
         class="material-icons">get_app</i></div>
@@ -106,7 +106,7 @@ Pyodide provides transparent conversion of objects between Javascript and Python
 
 ### index.js
 [View index.js](docs/js/index.js)
-1. Adding note data to pyodide 
+#### 1. Adding note data to pyodide 
 ```js
 // add note data to pyodide output text file for deck export
 var textToExport = "";
@@ -132,7 +132,7 @@ function addNoteToList() {
                             f.write(textToExport)`)
 }
 ```
-2. Generate and export deck
+#### 2. Generate and export deck
 ```js
 // export and download deck 
 function exportAll() {
@@ -146,7 +146,7 @@ function exportAll() {
 
 ### deck-export.js
 [View deck-export.js](docs/js/deck-export.js)
-1. Init pyodide for running python in browser
+#### 1. Init pyodide for running python in browser
 ```js
 languagePluginLoader.then(() => {
     return pyodide.loadPackage(['micropip'])
@@ -164,7 +164,7 @@ languagePluginLoader.then(function () {
 });
 
 ```
-2. python code to generate decks from the tsv file ```output-all-notes.txt```
+#### 2. python code to generate decks from the tsv file ```output-all-notes.txt```
 
 ```python
       import genanki
@@ -235,7 +235,7 @@ languagePluginLoader.then(function () {
       deck_export_msg = "Deck generated with {} flashcards".format(len(anki_deck.notes))
       js.showSnackbar(deck_export_msg)
 ```
-3. Change front, back, style and fields
+#### 3. Change front, back, style and fields
 
 Front and back should contain fields that are present in ```t_fields```.
 
@@ -243,7 +243,7 @@ Front and back should contain fields that are present in ```t_fields```.
 ```python
 {"name": "Field name"}
 ```
-4. Images can also be added to a deck if the tsv file contains ```<img>``` with a src tag
+#### 4. Images can also be added to a deck if the tsv file contains ```<img>``` with a src tag
 <br> Select image using ```input```
 
 ```js
@@ -309,7 +309,7 @@ anki_package.media_files = files
 Same goes for other media files.
 <br>View usage in [image occlusion in browser](https://github.com/infinyte7/image-occlusion-in-browser)
 
-5. Import the required python module in pyodide
+#### 5. Import the required python module in pyodide
 ```python
 import micropip
 
@@ -320,7 +320,7 @@ micropip.install("https://cdn.jsdelivr.net/gh/infinyte7/Anki-Export-Deck-tkinter
 micropip.install("https://cdn.jsdelivr.net/gh/infinyte7/Anki-Export-Deck-tkinter/docs/py-whl/cached_property-1.5.2-py2.py3-none-any.whl")
 micropip.install("https://cdn.jsdelivr.net/gh/infinyte7/Anki-Export-Deck-tkinter/docs/py-whl/genanki-0.8.0-py3-none-any.whl")
 ```
-6. Download generated deck
+#### 6. Download generated deck
 ```js
 function downloadDeck() {
     let txt = pyodide.runPython(`                  
@@ -339,7 +339,7 @@ function downloadDeck() {
     downloadLink.click();
 }
 ```
-7. Download ```output-all-notes.txt``` containing note data
+#### 7. Download ```output-all-notes.txt``` containing note data
 ```js
 function exportText() {
     let txt = pyodide.runPython(`                  
@@ -360,7 +360,8 @@ function exportText() {
     downloadLink.click();
 }
 ```
-8. Note:  If you want to use backslashes \\ in ```pythonCode``` you have to escape them with another backslash \\\\, otherwise it will not work or show an error.
+#### 8. Escape back slash in pythonCode
+Note:  If you want to use backslashes \\ in ```pythonCode``` you have to escape them with another backslash \\\\, otherwise it will not work or show an error.
 ```js
     csv_reader = csv.reader(csv_file, delimiter="\t")
                                                ^^^^^
