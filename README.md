@@ -15,7 +15,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
 # web-app addons
 - [Setup](#setup)
-- [How does it work?](#How-does-it-work?)
+- [How does it work?](#how-does-it-work)
 - [Advantages](#advantages)
 - [Disadvantages](#disadvantages)
 - [Projects](#projects)
@@ -52,20 +52,20 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
 # Read more
 - [Anki](https://apps.ankiweb.net/)
-Anki is a free and open-source flashcard program using spaced repetition, a technique from cognitive science for fast and long-lasting memorization. 
+    Anki is a free and open-source flashcard program using spaced repetition, a technique from cognitive science for fast and long-lasting memorization. 
 
 - [pyodide](https://github.com/iodide-project/pyodide)
 
-Pyodide brings the Python 3.8 runtime to the browser via WebAssembly, along with the Python scientific stack including NumPy, Pandas, Matplotlib, SciPy, and scikit-learn. The packages directory lists over 75 packages which are currently available. In addition it's possible to install pure Python wheels from PyPi.
+    Pyodide brings the Python 3.8 runtime to the browser via WebAssembly, along with the Python scientific stack including NumPy, Pandas, Matplotlib, SciPy, and scikit-learn. The packages directory lists over 75 packages which are currently available. In addition it's possible to install pure Python wheels from PyPi.
 
-Pyodide provides transparent conversion of objects between Javascript and Python. When used inside a browser, Python has full access to the Web APIs.
+    Pyodide provides transparent conversion of objects between Javascript and Python. When used inside a browser, Python has full access to the Web APIs.
 
 - [genanki](https://github.com/kerrickstaley/genanki)
 
-```genanki``` allows you to programmatically generate decks in Python 3 for Anki, a popular spaced-repetition flashcard program.
+    ```genanki``` allows you to programmatically generate decks in Python 3 for Anki, a popular spaced-repetition flashcard program.
 
 # Tutorial
-### index.html
+## index.html
 [View index.html](docs/index.html)
 #### 1. Add pyodide
 ```html
@@ -104,7 +104,7 @@ Pyodide provides transparent conversion of objects between Javascript and Python
         class="material-icons">add</i></div>
 ```
 
-### index.js
+## index.js
 [View index.js](docs/js/index.js)
 #### 1. Adding note data to pyodide 
 ```js
@@ -144,7 +144,7 @@ function exportAll() {
 }
 ```
 
-### deck-export.js
+## deck-export.js
 [View deck-export.js](docs/js/deck-export.js)
 #### 1. Init pyodide for running python in browser
 ```js
