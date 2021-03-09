@@ -24,6 +24,7 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
     - [index.html](#indexhtml)
     - [index.js](#indexjs)
     - [deck-export.js](#deck-exportjs)
+- [Note](#note)
 
 # Setup
 1. Fork this repository
@@ -360,22 +361,22 @@ function exportText() {
     downloadLink.click();
 }
 ```
-## Note
+# Note
 #### 1. Escape back slash in pythonCode
-Note:  If you want to use backslashes \\ in ```pythonCode``` you have to escape them with another backslash \\\\, otherwise it will not work or show an error.
+If you want to use backslashes \\ in ```pythonCode``` you have to escape them with another backslash \\\\, otherwise it will not work or show an error.
 ```js
-    csv_reader = csv.reader(csv_file, delimiter="\t")
-                                               ^^^^^
-    csv_reader = csv.reader(csv_file, delimiter="\\t")
+csv_reader = csv.reader(csv_file, delimiter="\t")
+                                            ^^^^^
+csv_reader = csv.reader(csv_file, delimiter="\\t")
 ```
 #### 2. Add constant value for model id
-For every deck generation, genanki use random model id which leads to creation of multiple ```Note Type```. So to avoid this use constant model id in genanki python code in deck-export.js
+For every deck generation, genanki use random model id which leads to creation of multiple ```Note Type```. So to avoid this use constant model id in ```pythonCode``` in deck-export.js
 
 ```python
 anki_model_name = "addon-in-browser"
 
 # model_id = random.randrange(1 << 30, 1 << 31)
-# fixed model id for this project
+# constant model id for this project
 model_id = 1716551648
 ```
 
