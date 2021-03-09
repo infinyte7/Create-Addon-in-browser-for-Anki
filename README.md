@@ -360,10 +360,34 @@ function exportText() {
     downloadLink.click();
 }
 ```
-#### 8. Escape back slash in pythonCode
+## Note
+#### 1. Escape back slash in pythonCode
 Note:  If you want to use backslashes \\ in ```pythonCode``` you have to escape them with another backslash \\\\, otherwise it will not work or show an error.
 ```js
     csv_reader = csv.reader(csv_file, delimiter="\t")
                                                ^^^^^
     csv_reader = csv.reader(csv_file, delimiter="\\t")
+```
+#### 2. Add constant value for model id
+For every deck generation, genanki use random model id which leads to creation of multiple ```Note Type```. So to avoid this use constant model id in genanki python code in deck-export.js
+
+```python
+anki_model_name = "addon-in-browser"
+
+# model_id = random.randrange(1 << 30, 1 << 31)
+# fixed model id for this project
+model_id = 1716551648
+```
+
+#### 3. Pass deck name from js to pyodide
+Create a variable ```deckName``` in js file and access it in pyodide
+
+```python
+import js
+
+new_title = js.deckName
+anki_deck_title = "Addon in browser"
+
+if new_title != None:
+   anki_deck_title = new_title
 ```
