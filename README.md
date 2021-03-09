@@ -52,8 +52,17 @@ https://infinyte7.github.io/Create-Addon-in-browser-for-Anki
 
 # Read more
 - [Anki](https://apps.ankiweb.net/)
+Anki is a free and open-source flashcard program using spaced repetition, a technique from cognitive science for fast and long-lasting memorization. 
+
 - [pyodide](https://github.com/iodide-project/pyodide)
+
+Pyodide brings the Python 3.8 runtime to the browser via WebAssembly, along with the Python scientific stack including NumPy, Pandas, Matplotlib, SciPy, and scikit-learn. The packages directory lists over 75 packages which are currently available. In addition it's possible to install pure Python wheels from PyPi.
+
+Pyodide provides transparent conversion of objects between Javascript and Python. When used inside a browser, Python has full access to the Web APIs.
+
 - [genanki](https://github.com/kerrickstaley/genanki)
+
+```genanki``` allows you to programmatically generate decks in Python 3 for Anki, a popular spaced-repetition flashcard program.
 
 # Tutorial
 ### index.html
@@ -235,6 +244,60 @@ Front and back should contain fields that are present in ```t_fields```.
 {"name": "Field name"}
 ```
 4. Images can also be added to a deck if the tsv file contains ```<img>``` with a src tag
+<br> Select image using ```input```
+
+```js
+function addImage() {
+    var imgHeight;
+    var imgWidth;
+
+    var selectedFile = event.target.files[0];
+    var reader = new FileReader();
+
+    var imgtag = document.getElementById("uploadPreview");
+    imgtag.title = selectedFile.name;
+    imgtag.type = selectedFile.type;
+
+    reader.onload = function (event) {
+        imgtag.src = event.target.result;
+
+        imgtag.onload = function () {
+            imgHeight = this.height;
+            imgWidth = this.width;
+        };
+    };
+
+    reader.readAsDataURL(selectedFile);
+}
+```
+
+<br> Saving selected image to internal. In this code base64 of image passed and written to file.
+
+```js
+function saveSelectedImageToInternal() {
+    pyodide.runPython("import os")
+    pyodide.runPython("import js")
+    pyodide.runPython("import base64")
+
+    pyodide.runPython("if not os.path.exists('images'): os.mkdir('images')")
+
+    // src tag contains base64 of image data
+    pyodide.runPython("blob = js.document.getElementById('uploadPreview').getAttribute('src')")
+    pyodide.runPython("name = js.document.getElementById('uploadPreview').getAttribute('title')")
+
+    // base64 data
+    // data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEECAAAAAAjIz....
+    // split data and write later part
+    // iVBORw0KGgoAAAANSUhEUgAAAZAAAAEECAAAAAAjIz....
+    pyodide.runPython("blob = blob.split(',')[1]")
+    pyodide.runPython("imgData = base64.b64decode(blob)")
+    pyodide.runPython(`with open('images/' + name, 'wb') as f: 
+                            f.write(imgData)`)
+}
+```
+
+Appending images to genanki Anki packages.
+
 ```python
 # add media
 files = []
@@ -244,7 +307,7 @@ for ext in ('*.gif', '*.png', '*.jpg', '*.jpeg', '*.bmp', '*.svg'):
 anki_package.media_files = files
 ```
 Same goes for other media files.
-View usage in [image occlusion in browser](https://github.com/infinyte7/image-occlusion-in-browser)
+<br>View usage in [image occlusion in browser](https://github.com/infinyte7/image-occlusion-in-browser)
 
 5. Import the required python module in pyodide
 ```python
