@@ -244,7 +244,7 @@ Front and back should contain fields that are present in ```t_fields```.
 {"name": "Field name"}
 ```
 #### 4. Images can also be added to a deck if the tsv file contains ```<img>``` with a src tag
-<br> Select image using ```input```
+Select image using ```input```
 
 ```js
 function addImage() {
@@ -271,7 +271,7 @@ function addImage() {
 }
 ```
 
-<br> Saving selected image to internal. In this code base64 of image passed and written to file.
+Saving selected image to internal. In this code base64 of image passed and written to file.
 
 ```js
 function saveSelectedImageToInternal() {
